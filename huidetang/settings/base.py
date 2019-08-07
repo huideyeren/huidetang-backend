@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'zappa_django_utils',
 ]
 
 MIDDLEWARE = [
@@ -91,8 +93,18 @@ WSGI_APPLICATION = 'huidetang.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'huidetang', # DB名を設定
+        'USER': os.getenv("DJANGO_STAGING_USER"), # DBへ接続するユーザIDを設定
+        'PASSWORD': os.getenv("DJANGO_STAGING_PASSWORD"), # DBへ接続するユーザIDのパスワードを設定
+        'HOST': os.getenv("DJANGO_STAGING_HOST"),
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+        'TEST': {
+            'NAME': 'test_huidetang'
+        }
     }
 }
 
@@ -161,6 +173,3 @@ WAGTAIL_SITE_NAME = "huidetang"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
-
-
-INSTALLED_APPS += ('zappa_django_utils',)

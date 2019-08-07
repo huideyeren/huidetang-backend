@@ -1,7 +1,7 @@
 {
     "dev": {
         "aws_region": "us-east-1",
-        "django_settings": "huidetang.settings",
+        "django_settings": "huidetang.settings.dev",
         "profile_name": "default",
         "project_name": "huidetang",
         "runtime": "python3.6",
