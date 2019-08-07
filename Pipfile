@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+
+[packages]
+wagtail = "<2.7,>=2.6"
+Django = ">=2.2,<2.3"
+django-storages = "*"
+zappa = "*"
+zappa-django-utils = "*"
+awscli = "*"
+python-dotenv = "*"
+pymysql = "*"
+
+[requires]
+python_version = "3.6"
