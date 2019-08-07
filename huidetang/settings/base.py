@@ -94,12 +94,13 @@ WSGI_APPLICATION = 'huidetang.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'huidetang', # DB名を設定
-        'USER': os.getenv("DJANGO_STAGING_USER"), # DBへ接続するユーザIDを設定
-        'PASSWORD': os.getenv("DJANGO_STAGING_PASSWORD"), # DBへ接続するユーザIDのパスワードを設定
+        'NAME': 'huidetang',
+        'USER': os.getenv("DJANGO_STAGING_USER"),
+        'PASSWORD': os.getenv("DJANGO_STAGING_PASSWORD"),
         'HOST': os.getenv("DJANGO_STAGING_HOST"),
         'PORT': '3306',
         'OPTIONS': {
+            'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
         'TEST': {
