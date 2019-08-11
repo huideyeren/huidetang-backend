@@ -15,6 +15,7 @@ awscli = "*"
 python-dotenv = "*"
 zappa = "*"
 mysqlclient = "*"
+django-s3-storage = "*"
 
 [requires]
 python_version = "3.6"
