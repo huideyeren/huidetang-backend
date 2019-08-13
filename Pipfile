@@ -18,6 +18,7 @@ mysqlclient = "*"
 django-s3-storage = "*"
 wagtail-markdown = "*"
 wagtail-graphql = "*"
+django-debug-toolbar = "*"
 
 [requires]
 python_version = "3.6"

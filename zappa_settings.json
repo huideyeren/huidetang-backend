@@ -5,7 +5,12 @@
         "profile_name": "default",
         "project_name": "huidetang",
         "runtime": "python3.6",
-        "s3_bucket": "huidetang-backend-dev"
+        "s3_bucket": "huidetang-backend-dev",
+        "environment_variables": {
+            "DJANGO_STAGING_USER": "master_iosif",
+            "DJANGO_STAGING_PASSWORD": "393924teYan4!",
+            "DJANGO_STAGING_HOST": "huidetang-staging.cluster-cv0dnnpp3yzk.us-east-1.rds.amazonaws.com"
+        }
     },
     "dev_ap_northeast_1": {
         "aws_region": "ap-northeast-1",
