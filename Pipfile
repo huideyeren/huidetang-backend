@@ -16,6 +16,7 @@ python-dotenv = "*"
 zappa = "*"
 mysqlclient = "*"
 django-s3-storage = "*"
+wagtail-markdown = "*"
 
 [requires]
 python_version = "3.6"
