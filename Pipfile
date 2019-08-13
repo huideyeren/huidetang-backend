@@ -17,6 +17,7 @@ zappa = "*"
 mysqlclient = "*"
 django-s3-storage = "*"
 wagtail-markdown = "*"
+wagtail-graphql = "*"
 
 [requires]
 python_version = "3.6"
