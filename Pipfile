@@ -16,7 +16,6 @@ python-dotenv = "*"
 zappa = "*"
 mysqlclient = "*"
 django-s3-storage = "*"
-wagtail-markdown = "*"
 wagtail-graphql = "*"
 django-debug-toolbar = "*"
 
