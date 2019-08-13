@@ -2,11 +2,6 @@ from .base import *
 
 DEBUG = False
 
-try:
-    from .local import *
-except ImportError:
-    pass
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -26,4 +21,9 @@ DATABASES = {
         }
     }
 }
+
+try:
+    from .local import *
+except ImportError:
+    pass
 
