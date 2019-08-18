@@ -128,6 +128,16 @@ USE_L10N = True
 USE_TZ = True
 
 
+# AWS Settings
+# The AWS region to connect to.
+AWS_REGION = "us-east-1"
+
+# The AWS access key to use.
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+
+# The AWS secret access key to use.
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -144,6 +154,7 @@ STATICFILES_DIRS = [
 # Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
@@ -161,8 +172,6 @@ WAGTAIL_SITE_NAME = "huidetang"
 BASE_URL = 'http://example.com'
 
 S3_BUCKET = "huidetang-backend-dev"
-
-STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
 
 AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET
 
