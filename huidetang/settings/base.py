@@ -150,11 +150,12 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
 
+DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
+
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
@@ -169,9 +170,11 @@ WAGTAIL_SITE_NAME = "huidetang"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://b2btuu96nj.execute-api.us-east-1.amazonaws.com/dev'
 
 S3_BUCKET = "huidetang-backend-dev"
+
+AWS_S3_BUCKET_NAME = "huidetang-backend"
 
 AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET
 
