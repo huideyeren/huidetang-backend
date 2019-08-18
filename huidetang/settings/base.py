@@ -26,6 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    'articles',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_s3_storage',
+    'django_ses',
 
     'zappa_django_utils',
 ]
@@ -179,3 +181,5 @@ AWS_S3_BUCKET_NAME = "huidetang-backend"
 AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET
 
 STATIC_URL = "https://%s.s3.amazonaws.com/" % S3_BUCKET
+
+EMAIL_BACKEND = 'django_ses.SESBackend'
