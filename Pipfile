@@ -15,10 +15,13 @@ awscli = "*"
 zappa = "*"
 mysqlclient = "*"
 django-s3-storage = "*"
-wagtail-graphql = "*"
 django-debug-toolbar = "*"
 wagtail-markdown = {git = "https://github.com/torchbox/wagtail-markdown.git",ref = "e6860c39b341a7006fd48915c220b98b6e8bee0c"}
 django-ses = "*"
+wagtail-graphql-api = "*"
 
 [requires]
 python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true

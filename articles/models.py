@@ -11,6 +11,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailmarkdown.edit_handlers import MarkdownPanel
 from wagtailmarkdown.fields import MarkdownField
 
+from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
+
 """Article Tags"""
 
 
@@ -25,7 +27,7 @@ class ArticlePageTag(TaggedItemBase):
 """Article Pages"""
 
 
-class ArticlePage(Page):
+class ArticlePage(GraphQLEnabledModel, Page):
 
     """Posted Date"""
     date = models.DateField(u"投稿日")
@@ -52,6 +54,14 @@ class ArticlePage(Page):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+    ]
+
+    graphql_fields = [
+        GraphQLField('date'),
+        GraphQLField('tags'),
+        GraphQLField('slug'),
+        GraphQLField('body'),
+        GraphQLField('feed_image'),
     ]
 
 

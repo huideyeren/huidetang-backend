@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7b19d3af6019f3df85805abb86114b84b11ea94101e6bdc451dd9d60b3d1bfef"
+            "sha256": "68a5207b70d8004f01a2984986f50404f669d4d1774778bfa2173892be59592a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -468,6 +468,14 @@
             ],
             "index": "pypi",
             "version": "==0.3.0"
+        },
+        "wagtail-graphql-api": {
+            "hashes": [
+                "sha256:51b8dc9ee9c3686e96980f154c07028e9c287e89316c95331715926aac2d8bfc",
+                "sha256:f145c5f3ba1f2d3b8e28ad96bd443abf16d309d9cb98429bd22826b92fb4ddc4"
+            ],
+            "index": "pypi",
+            "version": "==0.0.1a0"
         },
         "wagtail-markdown": {
             "git": "https://github.com/torchbox/wagtail-markdown.git",
