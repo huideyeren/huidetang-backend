@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "68a5207b70d8004f01a2984986f50404f669d4d1774778bfa2173892be59592a"
+            "sha256": "d20fc53d1a49e7ca6edf4527a29869579668c0a7e6f15695dc768d545822518b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,11 +32,11 @@
         },
         "awscli": {
             "hashes": [
-                "sha256:07d6651259438aa3f0a5efdaac2a333443bae43c6e2470f1aee1ebde9bf2888c",
-                "sha256:ed36aab89b8b70dce0bf8e6ade87b0d1a53d8cc44976d1a150f1f3cd3ad975a1"
+                "sha256:354ad55501282ce6bccec1eee6d5fa30426c3e1c19cfb03e08cf11c36f9c947f",
+                "sha256:f5d58a8e334a013a30d32909db2c88676c8022e6c38ff6ff8edc556f99c2aec4"
             ],
             "index": "pypi",
-            "version": "==1.16.220"
+            "version": "==1.16.222"
         },
         "beautifulsoup4": {
             "hashes": [
@@ -55,17 +55,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:8d934fcfca83c6ce40d53043cc94b1de6eef1d2dbe2a196343941587717ad1b7",
-                "sha256:e221f6867282266e06aec2213f0ea5fdbd4eb3facbca4fcbf96886073350bc5e"
+                "sha256:1a228661611cb99c3c54f5bdbdc29d9d7ef5341676a644d2508eeeff7b8b2fe3",
+                "sha256:c25d1089676213bda140c5b6faacd008b93203d27f1707cf0efc827d46cd719d"
             ],
-            "version": "==1.9.210"
+            "version": "==1.9.212"
         },
         "botocore": {
             "hashes": [
-                "sha256:0db52327f8d2891cca4c86dfc5cb3b4821d37b84c34804c26b82e775668490f5",
-                "sha256:7983b7624b3f71648a7101fbcb437e3d599b4f79b754e89220e574482a2f8298"
+                "sha256:123b1d703ee3445850f00969e07e276f949834c43048b6a9a0e5e7966a523108",
+                "sha256:bebd21f9c8badcb895fb735743d2a8df8289162314b9346879cb74a1d698e075"
             ],
-            "version": "==1.12.210"
+            "version": "==1.12.212"
         },
         "certifi": {
             "hashes": [
@@ -134,11 +134,11 @@
         },
         "django-ses": {
             "hashes": [
-                "sha256:3edc92714aa72a36898e09e9f8215af8bd6def5742be98a64265720e5615005c",
-                "sha256:6e95b5a99a45c6a3ab6ec7f0f30c8b7e82eaf483d0f7ef0d0c3451c12744861d"
+                "sha256:4c56cef944cf3aa4fc3d186977fc8fe8009efcc5a5b62548cb4c43e8308b50b6",
+                "sha256:66771e041196255708717ad7b35978b1e3873eb5ad17097cdcd0c6fe8d4e542f"
             ],
             "index": "pypi",
-            "version": "==0.8.10"
+            "version": "==0.8.11"
         },
         "django-storages": {
             "hashes": [
@@ -170,11 +170,11 @@
         },
         "docutils": {
             "hashes": [
-                "sha256:02aec4bd92ab067f6ff27a38a38a41173bf01bed8f89157768c1573f53e474a6",
-                "sha256:51e64ef2ebfb29cae1faa133b3710143496eca21c530f3f71424d77687764274",
-                "sha256:7a4bd47eaf6596e1295ecb11361139febe29b084a87bf005bf899f9a42edc3c6"
+                "sha256:6c4f696463b79f1fb8ba0c594b63840ebd41f059e92b31957c46b74a4599b6d0",
+                "sha256:9e4d7ecfc600058e07ba661411a2b7de2fd0fafa17d1a7f7361cd47b1175c827",
+                "sha256:a2aeea129088da402665e92e0b25b04b073c04b2dce4ab65caaa38b7ce2e1a99"
             ],
-            "version": "==0.14"
+            "version": "==0.15.2"
         },
         "draftjs-exporter": {
             "hashes": [
@@ -207,13 +207,6 @@
                 "sha256:d75b3e468d8d765d5964bc809e403b44bf7c37556c0464230a5083bccf14581b"
             ],
             "version": "==2.5.0"
-        },
-        "graphene-django-optimizer": {
-            "hashes": [
-                "sha256:e3eafbcf343a9501ced71d0a8537dda2b1fe0d7bcf9c31bf0b371556d8ee4467",
-                "sha256:f55adcb5452d6d65dfce4afa5de50f6d987bb84c5dd3ccdc89b0802662852b1b"
-            ],
-            "version": "==0.3.6"
         },
         "graphql-core": {
             "hashes": [
@@ -460,14 +453,6 @@
             ],
             "index": "pypi",
             "version": "==2.6.1"
-        },
-        "wagtail-graphql": {
-            "hashes": [
-                "sha256:2caaadb9da90fbfc16bd83a5a594a4c5863963fdf6fc2a35cac488b801ef6c7c",
-                "sha256:bacce50d7ee71eec13a2c89fdf25effff7cf3b9808f48c48755db2f227031f15"
-            ],
-            "index": "pypi",
-            "version": "==0.3.0"
         },
         "wagtail-graphql-api": {
             "hashes": [
