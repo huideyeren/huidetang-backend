@@ -23,9 +23,9 @@ class CharacterPage(GraphQLEnabledModel, Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        verbose_name=u'画像'
+        verbose_name=u'画像',
     )
-    introduction = MarkdownField(u"説明", null=True)
+    introduction = MarkdownField(verbose_name=u"説明", null=True)
     game_name = models.CharField(u"登録されているゲーム", max_length=20, null=True)
     character_page_url = models.CharField(u"キャラクターのページ", max_length=255, null=True)
 
