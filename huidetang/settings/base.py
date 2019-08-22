@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'articles',
     'happiness',
     'character',
+    'book',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
