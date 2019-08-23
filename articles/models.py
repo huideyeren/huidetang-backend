@@ -32,16 +32,17 @@ class ArticlePage(GraphQLEnabledModel, Page):
     """Posted Date"""
     date = models.DateField(u"投稿日")
     """Page Tag"""
-    tags = ClusterTaggableManager(through=ArticlePageTag, blank=True)
+    tags = ClusterTaggableManager(verbose_name=u'タグ',through=ArticlePageTag, blank=True)
     """Article's Body"""
-    body = MarkdownField(blank=True)
+    body = MarkdownField(verbose_name=u'本文', blank=True)
     """Image File"""
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
+        verbose_name=u'画像',
     )
 
     content_panels = Page.content_panels + [
@@ -49,7 +50,7 @@ class ArticlePage(GraphQLEnabledModel, Page):
         FieldPanel('tags'),
         MarkdownPanel("body", classname="full"),
         ImageChooserPanel('feed_image'),
-        InlinePanel('related_links', label="Related links"),
+        InlinePanel('related_links', label=u'関連リンク'),
     ]
 
     promote_panels = [
@@ -62,6 +63,7 @@ class ArticlePage(GraphQLEnabledModel, Page):
         GraphQLField('slug'),
         GraphQLField('body'),
         GraphQLField('feed_image'),
+        GraphQLField('author_name'),
     ]
 
 
