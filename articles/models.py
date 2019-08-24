@@ -32,7 +32,11 @@ class ArticlePage(GraphQLEnabledModel, Page):
     """Posted Date"""
     date = models.DateField(u"投稿日")
     """Page Tag"""
-    tags = ClusterTaggableManager(verbose_name=u'タグ',through=ArticlePageTag, blank=True)
+    tags = ClusterTaggableManager(
+        verbose_name=u'タグ',
+        through=ArticlePageTag,
+        blank=True
+    )
     """Article's Body"""
     body = MarkdownField(verbose_name=u'本文', blank=True)
     """Image File"""
