@@ -67,7 +67,7 @@ class ArticlePage(GraphQLEnabledModel, Page):
         GraphQLField('slug'),
         GraphQLField('body'),
         GraphQLField('feed_image'),
-        GraphQLField('author_name'),
+        GraphQLField('related_links')
     ]
 
 

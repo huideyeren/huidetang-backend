@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'character',
     'book',
     'author',
+    'portfolio',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

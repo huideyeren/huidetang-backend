@@ -7,6 +7,9 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
 
+from wagtailmarkdown.edit_handlers import MarkdownPanel
+from wagtailmarkdown.fields import MarkdownField
+
 # Create your models here.
 
 
@@ -55,3 +58,20 @@ class HappinessPage(GraphQLEnabledModel, Page):
 
 
 HappinessPage._meta.get_field('slug').default = 'default-blank-slug'
+
+
+class HappinessIndexPage(GraphQLEnabledModel, Page):
+    intro = MarkdownField(null=True)
+
+    def child_pages(self):
+        return HappinessPage.objects.live().child_of(self)
+
+    content_panels = Page.content_panels + [
+        MarkdownPanel('intro', classname='full')
+    ]
+
+    graphql_fields = [
+        GraphQLField('intro'),
+    ]
+
+    subpage_types = ['HappinessPage']

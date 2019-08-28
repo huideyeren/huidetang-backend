@@ -108,3 +108,20 @@ class AuthorPageSnsLink(Orderable):
         FieldPanel('name'),
         FieldPanel('url'),
     ]
+
+
+class AuthorIndexPage(GraphQLEnabledModel, Page):
+    intro = MarkdownField(null=True)
+
+    def child_pages(self):
+        return AuthorPage.objects.live().child_of(self)
+
+    content_panels = Page.content_panels + [
+        MarkdownPanel('intro', classname='full')
+    ]
+
+    graphql_fields = [
+        GraphQLField('intro'),
+    ]
+
+    subpage_types = ['AuthorPage']
