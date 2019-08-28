@@ -59,3 +59,20 @@ class CharacterPage(GraphQLEnabledModel, Page):
         new_slug = '%s' % self.character_id
         self.title = new_title
         self.slug = slugify(new_slug)
+
+
+class CharacterIndexPage(GraphQLEnabledModel, Page):
+    intro = MarkdownField(null=True)
+
+    def child_pages(self):
+        return CharacterPage.objects.live().child_of(self)
+
+    content_panels = Page.content_panels + [
+        MarkdownPanel('intro', classname='full')
+    ]
+
+    graphql_fields = [
+        GraphQLField('intro'),
+    ]
+
+    subpage_types = ['CharacterPage']

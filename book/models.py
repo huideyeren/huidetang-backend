@@ -51,3 +51,20 @@ class BookPage(GraphQLEnabledModel, Page):
         GraphQLField('image'),
         GraphQLField('slug')
     ]
+
+
+class BookIndexPage(GraphQLEnabledModel, Page):
+    intro = MarkdownField(null=True)
+
+    def child_pages(self):
+        return BookPage.objects.live().child_of(self)
+
+    content_panels = Page.content_panels + [
+        MarkdownPanel('intro', classname='full')
+    ]
+
+    graphql_fields = [
+        GraphQLField('intro'),
+    ]
+
+    subpage_types = ['BookPage']
