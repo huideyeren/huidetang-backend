@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'book',
     'author',
     'portfolio',
+    'site_policy',
+    'tommywalker',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

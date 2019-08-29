@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d20fc53d1a49e7ca6edf4527a29869579668c0a7e6f15695dc768d545822518b"
+            "sha256": "c8177c552739c73a2a2acf7b80ca2956d70811f09d047d8002b8d029f059515d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,11 +32,11 @@
         },
         "awscli": {
             "hashes": [
-                "sha256:354ad55501282ce6bccec1eee6d5fa30426c3e1c19cfb03e08cf11c36f9c947f",
-                "sha256:f5d58a8e334a013a30d32909db2c88676c8022e6c38ff6ff8edc556f99c2aec4"
+                "sha256:05ec43499da80adb3b88c3b3dae783c06f105444478b7b254af7e1b12561f858",
+                "sha256:e138f0a5e12f15d98e09a0eaeb85107e8ed43f5d9a5fc303b3837a1512565bde"
             ],
             "index": "pypi",
-            "version": "==1.16.222"
+            "version": "==1.16.228"
         },
         "beautifulsoup4": {
             "hashes": [
@@ -55,17 +55,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:1a228661611cb99c3c54f5bdbdc29d9d7ef5341676a644d2508eeeff7b8b2fe3",
-                "sha256:c25d1089676213bda140c5b6faacd008b93203d27f1707cf0efc827d46cd719d"
+                "sha256:09cf39452a8a45e6e91ba64486e1861e0d6466d50b046d445627cc1cbdde29a1",
+                "sha256:274708f2103e42fac72ad2b56681c26b70909594bef146a99d376c52df4ded04"
             ],
-            "version": "==1.9.212"
+            "version": "==1.9.218"
         },
         "botocore": {
             "hashes": [
-                "sha256:123b1d703ee3445850f00969e07e276f949834c43048b6a9a0e5e7966a523108",
-                "sha256:bebd21f9c8badcb895fb735743d2a8df8289162314b9346879cb74a1d698e075"
+                "sha256:aba87b5c594ec33deb679eda0a19b32e654bf781ff1dd8f1b53dffcd7c8a4dd9",
+                "sha256:c66f4ffccb57dcca45b0f279e7fafc0ee83dab2a37aaeb047acb2543c8408439"
             ],
-            "version": "==1.12.212"
+            "version": "==1.12.218"
         },
         "certifi": {
             "hashes": [
@@ -110,14 +110,6 @@
             "index": "pypi",
             "version": "==2.1.7"
         },
-        "django-debug-toolbar": {
-            "hashes": [
-                "sha256:17c53cd6bf4e7d69902aedf9a1d26c5d3b7369b54c5718744704f27b5a72f35d",
-                "sha256:9a23ada2e43cd989195db3c18710b5d7451134a0d48127ab64c1d2ad81700342"
-            ],
-            "index": "pypi",
-            "version": "==2.0"
-        },
         "django-modelcluster": {
             "hashes": [
                 "sha256:59672386191d38c69d6f994c3f9aaab3ff93910ec71e78a0bb6aa9abd4d1b90a",
@@ -134,11 +126,11 @@
         },
         "django-ses": {
             "hashes": [
-                "sha256:4c56cef944cf3aa4fc3d186977fc8fe8009efcc5a5b62548cb4c43e8308b50b6",
-                "sha256:66771e041196255708717ad7b35978b1e3873eb5ad17097cdcd0c6fe8d4e542f"
+                "sha256:d3721a2068ce0cf5f86ad31af1a1a8e256e8dbf0f5e0d1c71129f36f20191e18",
+                "sha256:f723f5c93ac38278c9a3f390b8df485953486d2c2011670fe0860f99200b9103"
             ],
             "index": "pypi",
-            "version": "==0.8.11"
+            "version": "==0.8.12"
         },
         "django-storages": {
             "hashes": [
@@ -265,6 +257,8 @@
         },
         "mysqlclient": {
             "hashes": [
+                "sha256:79a498ddda955e488f80c82a6392bf6e07c323d48db236033f33825665d8ba5c",
+                "sha256:8c3b61d89f7daaeab6aad6bf4c4bc3ef30bec1a8169f94dc59aea87ba2fabf80",
                 "sha256:9c737cc55a5dc8dd3583a942d5a9b21be58d16f00f5fefca4e575e7d9682e98c"
             ],
             "index": "pypi",
@@ -404,13 +398,6 @@
             ],
             "version": "==1.12.0"
         },
-        "sqlparse": {
-            "hashes": [
-                "sha256:40afe6b8d4b1117e7dff5504d7a8ce07d9a1b15aeeade8a2d10f130a834f8177",
-                "sha256:7c3dca29c022744e95b547e867cee89f4fce4373f3549ccd8797d8eb52cdb873"
-            ],
-            "version": "==0.3.0"
-        },
         "toml": {
             "hashes": [
                 "sha256:229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c",
@@ -427,9 +414,9 @@
         },
         "troposphere": {
             "hashes": [
-                "sha256:86aaccc33df28e3929a11821820dc956171a870e2d78099018ed4ebd73a818e0"
+                "sha256:2a0ab9f02fd28ca3c38ba363c1774ca672afab24558d6024a8145a107980b747"
             ],
-            "version": "==2.5.0"
+            "version": "==2.5.1"
         },
         "unidecode": {
             "hashes": [
