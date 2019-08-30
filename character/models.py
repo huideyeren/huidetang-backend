@@ -43,7 +43,7 @@ class CharacterPage(GraphQLEnabledModel, Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
 
-    graphql_field = [
+    graphql_fields = [
         GraphQLField("nickname"),
         GraphQLField("name"),
         GraphQLField("character_id"),
