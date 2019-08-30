@@ -192,6 +192,7 @@ AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET
 
 STATIC_URL = "https://%s.s3.amazonaws.com/" % S3_BUCKET
 
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'sitemaster@huideyeren.info'
 EMAIL_BACKEND = 'django_ses.SESBackend'
 
 GRAPHENE = {

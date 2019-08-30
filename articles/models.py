@@ -71,7 +71,7 @@ class ArticlePage(GraphQLEnabledModel, Page):
     ]
 
 
-class ArticlePageRelatedLink(Orderable):
+class ArticlePageRelatedLink(GraphQLEnabledModel, Orderable):
     page = ParentalKey(
         ArticlePage,
         on_delete=models.CASCADE,
@@ -83,4 +83,9 @@ class ArticlePageRelatedLink(Orderable):
     panels = [
         FieldPanel('name'),
         FieldPanel('url'),
+    ]
+
+    graphql_fields = [
+        GraphQLField('name'),
+        GraphQLField('url')
     ]

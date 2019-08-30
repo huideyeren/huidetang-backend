@@ -54,7 +54,7 @@ class PortfolioPage(GraphQLEnabledModel, Page):
     ]
 
 
-class PortfolioPageJobCareer(Orderable):
+class PortfolioPageJobCareer(GraphQLEnabledModel, Orderable):
     portfolio = ParentalKey(
         PortfolioPage,
         on_delete=models.CASCADE,
@@ -75,8 +75,16 @@ class PortfolioPageJobCareer(Orderable):
         MarkdownPanel('description')
     ]
 
+    graphql_fields = [
+        GraphQLField('title'),
+        GraphQLField('start_date'),
+        GraphQLField('end_date'),
+        GraphQLField('job_role'),
+        GraphQLField('description')
+    ]
 
-class PortfolioPageRelatedLink(Orderable):
+
+class PortfolioPageRelatedLink(GraphQLEnabledModel, Orderable):
     page = ParentalKey(
         PortfolioPage,
         on_delete=models.CASCADE,
@@ -89,6 +97,11 @@ class PortfolioPageRelatedLink(Orderable):
     panels = [
         FieldPanel('name'),
         FieldPanel('url'),
+    ]
+
+    graphql_fields = [
+        GraphQLField('name'),
+        GraphQLField('url')
     ]
 
 

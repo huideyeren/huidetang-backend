@@ -62,7 +62,7 @@ class AuthorPage(GraphQLEnabledModel, Page):
     ]
 
 
-class AuthorPagePortfolio(Orderable):
+class AuthorPagePortfolio(GraphQLEnabledModel, Orderable):
     Author = ParentalKey(
         AuthorPage,
         on_delete=models.CASCADE,
@@ -77,8 +77,13 @@ class AuthorPagePortfolio(Orderable):
         FieldPanel('url'),
     ]
 
+    graphql_fields = [
+        GraphQLField('name'),
+        GraphQLField('url')
+    ]
 
-class AuthorPageAmazonWishList(Orderable):
+
+class AuthorPageAmazonWishList(GraphQLEnabledModel, Orderable):
     Author = ParentalKey(
         AuthorPage,
         on_delete=models.CASCADE,
@@ -93,8 +98,13 @@ class AuthorPageAmazonWishList(Orderable):
         FieldPanel('url'),
     ]
 
+    graphql_fields = [
+        GraphQLField('name'),
+        GraphQLField('url')
+    ]
 
-class AuthorPageSnsLink(Orderable):
+
+class AuthorPageSnsLink(GraphQLEnabledModel, Orderable):
     Author = ParentalKey(
         AuthorPage,
         on_delete=models.CASCADE,
@@ -107,6 +117,11 @@ class AuthorPageSnsLink(Orderable):
     panels = [
         FieldPanel('name'),
         FieldPanel('url'),
+    ]
+
+    graphql_fields = [
+        GraphQLField('name'),
+        GraphQLField('url')
     ]
 
 
