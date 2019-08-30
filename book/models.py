@@ -41,7 +41,7 @@ class BookPage(GraphQLEnabledModel, Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
 
-    graphql_field = [
+    graphql_fields = [
         GraphQLField('price'),
         GraphQLField('published_date'),
         GraphQLField('published_event'),
