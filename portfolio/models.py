@@ -1,13 +1,13 @@
 from django.db import models
+from django.utils.text import slugify
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from modelcluster.models import ClusterableModel
 
 from taggit.models import TaggedItemBase
 
 from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
 from wagtailmarkdown.edit_handlers import MarkdownPanel
 from wagtailmarkdown.fields import MarkdownField
 
@@ -32,6 +32,14 @@ class PortfolioPage(GraphQLEnabledModel, Page):
         blank=True
     )
     github_url = models.URLField(u'GitHubの個人ページ', max_length=200, blank=True)
+    author = models.ForeignKey(
+        'author.AuthorPage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name=u'著者',
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('update_date'),
@@ -39,6 +47,7 @@ class PortfolioPage(GraphQLEnabledModel, Page):
         FieldPanel('github_url'),
         InlinePanel('job_career', label=u'職務経歴'),
         InlinePanel('related_links', label=u'関連リンク'),
+        PageChooserPanel('author', 'author.AuthorPage'),
     ]
 
     promote_panels = [
@@ -46,12 +55,21 @@ class PortfolioPage(GraphQLEnabledModel, Page):
     ]
 
     graphql_fields = [
+        GraphQLField('author'),
         GraphQLField('update_date'),
         GraphQLField('tech'),
         GraphQLField('github_url'),
         GraphQLField('job_career'),
-        GraphQLField('related_links')
+        GraphQLField('related_links'),
+        GraphQLField('slug'),
     ]
+
+    def clean(self):
+        super().clean()
+        new_title = '%s のポートフォリオ' % self.author.name
+        new_slug = self.author.slug
+        self.title = new_title
+        self.slug = slugify(new_slug)
 
 
 class PortfolioPageJobCareer(GraphQLEnabledModel, Orderable):
@@ -80,7 +98,7 @@ class PortfolioPageJobCareer(GraphQLEnabledModel, Orderable):
         GraphQLField('start_date'),
         GraphQLField('end_date'),
         GraphQLField('job_role'),
-        GraphQLField('description')
+        GraphQLField('description'),
     ]
 
 
