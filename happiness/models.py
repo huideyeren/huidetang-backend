@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, PageChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
@@ -27,12 +27,21 @@ class HappinessPage(GraphQLEnabledModel, Page):
         related_name='+',
         verbose_name=u'画像'
     )
+    author = models.ForeignKey(
+        'author.AuthorPage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name=u'著者',
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('first'),
         FieldPanel('second'),
         FieldPanel('third'),
+        PageChooserPanel('author', 'author.AuthorPage'),
         ImageChooserPanel('feed_image'),
     ]
 
@@ -41,6 +50,7 @@ class HappinessPage(GraphQLEnabledModel, Page):
     ]
 
     graphql_fields = [
+        GraphQLField('author'),
         GraphQLField('date'),
         GraphQLField('slug'),
         GraphQLField('first'),

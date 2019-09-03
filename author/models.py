@@ -25,6 +25,13 @@ class AuthorPageInterest(TaggedItemBase):
 
 class AuthorPage(GraphQLEnabledModel, Page):
     profile = MarkdownField(verbose_name=u'プロフィール')
+    nickname = models.CharField(verbose_name=u'ニックネーム', max_length=25, null=True, blank=True)
+    first_name = models.CharField(verbose_name=u'名', max_length=10, null=True, blank=True)
+    middle_name = models.CharField(verbose_name=u'ミドルネーム', max_length=10, null=True, blank=True)
+    family_name = models.CharField(verbose_name=u'姓', max_length=10, null=True, blank=True)
+    name = models.CharField(verbose_name=u'表示名', max_length=80, null=True, blank=True)
+    is_surname_first = models.BooleanField(verbose_name=u'姓が先の表記', null=True, blank=True)
+    use_nickname = models.BooleanField(verbose_name=u'ニックネームの使用', null=True, blank=True)
     portrait = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -43,6 +50,13 @@ class AuthorPage(GraphQLEnabledModel, Page):
         MarkdownPanel('profile'),
         ImageChooserPanel('portrait'),
         FieldPanel('interest'),
+        FieldPanel('nickname'),
+        FieldPanel('first_name'),
+        FieldPanel('middle_name'),
+        FieldPanel('family_name'),
+        FieldPanel('name'),
+        FieldPanel('is_surname_first'),
+        FieldPanel('use_nickname'),
         InlinePanel('portfolio_links', label=u'ポートフォリオ'),
         InlinePanel('amazon_wish_list_links', label=u'Amazonのほしいものリスト'),
         InlinePanel('sns_links', label=u'SNSなどのリンク'),
@@ -53,6 +67,7 @@ class AuthorPage(GraphQLEnabledModel, Page):
     ]
 
     graphql_fields = [
+        GraphQLField('name'),
         GraphQLField('profile'),
         GraphQLField('portrait'),
         GraphQLField('interest'),
@@ -60,6 +75,30 @@ class AuthorPage(GraphQLEnabledModel, Page):
         GraphQLField('amazon_wish_list_links'),
         GraphQLField('sns_links'),
     ]
+
+    def clean(self):
+        if self.nickname is not None and self.use_nickname is True:
+            self.name = self.nickname
+        elif self.is_surname_first is True:
+            if self.middle_name is None:
+                self.name = self.family_name + u' ' + self.first_name
+            else:
+                self.name = (
+                    self.family_name + u' ' +
+                    self.middle_name + u' ' +
+                    self.first_name
+                )
+        else:
+            if self.middle_name is None:
+                self.name = self.first_name + u' ' + self.family_name
+            else:
+                self.name = (
+                    self.first_name + u' ' +
+                    self.middle_name + u' ' +
+                    self.family_name
+                )
+        
+        self.title = '%s のプロフィール' % self.name
 
 
 class AuthorPagePortfolio(GraphQLEnabledModel, Orderable):

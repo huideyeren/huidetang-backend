@@ -6,7 +6,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailmarkdown.edit_handlers import MarkdownPanel
 from wagtailmarkdown.fields import MarkdownField
@@ -30,7 +30,7 @@ class ArticlePageTag(TaggedItemBase):
 class ArticlePage(GraphQLEnabledModel, Page):
 
     """Posted Date"""
-    date = models.DateField(u"投稿日")
+    date = models.DateTimeField(u"投稿日")
     """Page Tag"""
     tags = ClusterTaggableManager(
         verbose_name=u'タグ',
@@ -48,12 +48,21 @@ class ArticlePage(GraphQLEnabledModel, Page):
         related_name='+',
         verbose_name=u'画像',
     )
+    author = models.ForeignKey(
+        'author.AuthorPage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name=u'著者',
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('tags'),
         MarkdownPanel("body", classname="full"),
         ImageChooserPanel('feed_image'),
+        PageChooserPanel('author', 'author.AuthorPage'),
         InlinePanel('related_links', label=u'関連リンク'),
     ]
 
@@ -62,6 +71,7 @@ class ArticlePage(GraphQLEnabledModel, Page):
     ]
 
     graphql_fields = [
+        GraphQLField('author'),
         GraphQLField('date'),
         GraphQLField('tags'),
         GraphQLField('slug'),
