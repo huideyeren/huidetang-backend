@@ -182,7 +182,7 @@ WAGTAIL_SITE_NAME = "huidetang"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'https://b2btuu96nj.execute-api.us-east-1.amazonaws.com/dev'
+BASE_URL = 'https://huideyeren.info'
 
 S3_BUCKET = "huidetang-backend-dev"
 
