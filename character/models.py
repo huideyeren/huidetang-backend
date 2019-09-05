@@ -8,7 +8,8 @@ from wagtailmarkdown.edit_handlers import MarkdownPanel
 from wagtailmarkdown.fields import MarkdownField
 
 from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
-
+from wagtail.core.signals import page_published
+import urllib
 # Create your models here.
 
 
@@ -60,6 +61,12 @@ class CharacterPage(GraphQLEnabledModel, Page):
         self.title = new_title
         self.slug = slugify(new_slug)
 
+    def send_signal(sender):
+        url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
+        urllib.request.urlopen(url=url)
+
+    page_published.connect(send_signal)
+
 
 class CharacterIndexPage(GraphQLEnabledModel, Page):
     intro = MarkdownField(null=True)
@@ -76,3 +83,9 @@ class CharacterIndexPage(GraphQLEnabledModel, Page):
     ]
 
     subpage_types = ['CharacterPage']
+
+    def send_signal(sender):
+        url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
+        urllib.request.urlopen(url=url)
+
+    page_published.connect(send_signal)

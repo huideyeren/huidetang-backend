@@ -12,6 +12,8 @@ from wagtailmarkdown.edit_handlers import MarkdownPanel
 from wagtailmarkdown.fields import MarkdownField
 
 from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
+from wagtail.core.signals import page_published
+import urllib
 # Create your models here.
 
 
@@ -97,8 +99,14 @@ class AuthorPage(GraphQLEnabledModel, Page):
                     self.middle_name + u' ' +
                     self.family_name
                 )
-        
+
         self.title = '%s のプロフィール' % self.name
+
+    def send_signal(sender):
+        url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
+        urllib.request.urlopen(url=url)
+
+    page_published.connect(send_signal)
 
 
 class AuthorPagePortfolio(GraphQLEnabledModel, Orderable):
@@ -179,3 +187,9 @@ class AuthorIndexPage(GraphQLEnabledModel, Page):
     ]
 
     subpage_types = ['AuthorPage']
+
+    def send_signal(sender):
+        url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
+        urllib.request.urlopen(url=url)
+
+    page_published.connect(send_signal)
