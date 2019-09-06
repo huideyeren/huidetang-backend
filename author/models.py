@@ -12,8 +12,12 @@ from wagtailmarkdown.edit_handlers import MarkdownPanel
 from wagtailmarkdown.fields import MarkdownField
 
 from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
-from wagtail.core.signals import page_published
+from wagtail.core.signals import page_published, page_unpublished
 import urllib
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 # Create your models here.
 
 
@@ -104,12 +108,13 @@ class AuthorPage(GraphQLEnabledModel, Page):
 
     def send_signal(self, **kwargs):
         url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
-        values = ''
-        data = urllib.parse.urlencode(values).encode('utf-8')
-        req = urllib.request.Request(url=url, data=data)
-        urllib.request.urlopen(req)
+        req = urllib.request.Request(url)
+        with urllib.request.urlopen(req) as res:
+            body = res.read()
+            logger.debug(body)
 
     page_published.send(send_signal)
+    page_unpublished.send(send_signal)
 
 
 class AuthorPagePortfolio(GraphQLEnabledModel, Orderable):
@@ -193,9 +198,10 @@ class AuthorIndexPage(GraphQLEnabledModel, Page):
 
     def send_signal(self, **kwargs):
         url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
-        values = ''
-        data = urllib.parse.urlencode(values).encode('utf-8')
-        req = urllib.request.Request(url=url, data=data)
-        urllib.request.urlopen(req)
+        req = urllib.request.Request(url)
+        with urllib.request.urlopen(req) as res:
+            body = res.read()
+            logger.debug(body)
 
     page_published.send(send_signal)
+    page_unpublished.send(send_signal)
