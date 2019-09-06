@@ -67,11 +67,14 @@ class HappinessPage(GraphQLEnabledModel, Page):
         self.title = new_title
         self.slug = slugify(new_slug)
 
-    def send_signal(sender):
+    def send_signal(self, **kwargs):
         url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
-        urllib.request.urlopen(url=url)
+        values = ''
+        data = urllib.parse.urlencode(values).encode('utf-8')
+        req = urllib.request.Request(url=url, data=data)
+        urllib.request.urlopen(req)
 
-    page_published.connect(send_signal)
+    page_published.send(send_signal)
 
 
 HappinessPage._meta.get_field('slug').default = 'default-blank-slug'
@@ -93,8 +96,11 @@ class HappinessIndexPage(GraphQLEnabledModel, Page):
 
     subpage_types = ['HappinessPage']
 
-    def send_signal(sender):
+    def send_signal(self, **kwargs):
         url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
-        urllib.request.urlopen(url=url)
+        values = ''
+        data = urllib.parse.urlencode(values).encode('utf-8')
+        req = urllib.request.Request(url=url, data=data)
+        urllib.request.urlopen(req)
 
-    page_published.connect(send_signal)
+    page_published.send(send_signal)

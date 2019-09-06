@@ -26,6 +26,7 @@ class CharacterPage(GraphQLEnabledModel, Page):
         related_name='+',
         verbose_name=u'画像',
     )
+    description = models.CharField(u'概要', max_length=255, null=True)
     introduction = MarkdownField(verbose_name=u"説明", null=True)
     game_name = models.CharField(u"登録されているゲーム", max_length=20, null=True)
     character_page_url = models.CharField(u"キャラクターのページ", max_length=255, null=True)
@@ -35,6 +36,7 @@ class CharacterPage(GraphQLEnabledModel, Page):
         FieldPanel('name'),
         FieldPanel('character_id'),
         ImageChooserPanel('image'),
+        FieldPanel('description'),
         MarkdownPanel('introduction'),
         FieldPanel('game_name'),
         FieldPanel('character_page_url'),
@@ -49,6 +51,7 @@ class CharacterPage(GraphQLEnabledModel, Page):
         GraphQLField("name"),
         GraphQLField("character_id"),
         GraphQLField("image"),
+        GraphQLField("description"),
         GraphQLField("introduction"),
         GraphQLField("game_name"),
         GraphQLField("character_page_url"),
@@ -61,11 +64,14 @@ class CharacterPage(GraphQLEnabledModel, Page):
         self.title = new_title
         self.slug = slugify(new_slug)
 
-    def send_signal(sender):
+    def send_signal(self, **kwargs):
         url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
-        urllib.request.urlopen(url=url)
+        values = ''
+        data = urllib.parse.urlencode(values).encode('utf-8')
+        req = urllib.request.Request(url=url, data=data)
+        urllib.request.urlopen(req)
 
-    page_published.connect(send_signal)
+    page_published.send(send_signal)
 
 
 class CharacterIndexPage(GraphQLEnabledModel, Page):
@@ -84,8 +90,11 @@ class CharacterIndexPage(GraphQLEnabledModel, Page):
 
     subpage_types = ['CharacterPage']
 
-    def send_signal(sender):
+    def send_signal(self, **kwargs):
         url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
-        urllib.request.urlopen(url=url)
+        values = ''
+        data = urllib.parse.urlencode(values).encode('utf-8')
+        req = urllib.request.Request(url=url, data=data)
+        urllib.request.urlopen(req)
 
-    page_published.connect(send_signal)
+    page_published.send(send_signal)
