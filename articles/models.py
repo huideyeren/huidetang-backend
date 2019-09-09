@@ -16,6 +16,8 @@ from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
 from wagtail.core.signals import page_published, page_unpublished
 import urllib
 import logging
+import json
+import os
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -32,22 +34,16 @@ class ArticlePageTag(TaggedItemBase):
     )
 
 
-"""Article Pages"""
-
-
 class ArticlePage(GraphQLEnabledModel, Page):
+    """Article Pages"""
 
-    """Posted Date"""
     date = models.DateTimeField(u"投稿日")
-    """Page Tag"""
     tags = ClusterTaggableManager(
         verbose_name=u'タグ',
         through=ArticlePageTag,
         blank=True
     )
-    """Article's Body"""
     body = MarkdownField(verbose_name=u'本文', blank=True)
-    """Image File"""
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -88,15 +84,34 @@ class ArticlePage(GraphQLEnabledModel, Page):
         GraphQLField('related_links')
     ]
 
-    def send_signal(self, **kwargs):
-        url = 'https://api.netlify.com/build_hooks/5d7170b7f2df0f019199c810'
-        req = urllib.request.Request(url)
-        with urllib.request.urlopen(req) as res:
-            body = res.read()
-            logger.debug(body)
+    def send_published_signal(self, **kwargs):
+        """Sending signal when an article is published."""
+        url = os.getenv('NETLIFY_HOOKS_URL')
+        data = {}
+        headers = {
+            'Content-Type': 'application/json',
+        }
+        req = urllib.request.Request(url, json.dumps(data).encode(), headers)
+        res = urllib.request.urlopen(req).read()
+        logger.debug(res)
 
-    page_published.send(send_signal)
-    page_unpublished.send(send_signal)
+        page_published.send(sender=self.__class__)
+
+    def send_unpublished_signal(self, **kwargs):
+        """Sending signal when an article is unpublished."""
+        url = os.getenv('NETLIFY_HOOKS_URL')
+        data = {}
+        headers = {
+            'Content-Type': 'application/json',
+        }
+        req = urllib.request.Request(url, json.dumps(data).encode(), headers)
+        res = urllib.request.urlopen(req).read()
+        logger.debug(res)
+
+        page_unpublished.send(sender=self.__class__)
+
+    page_published.connect(send_published_signal)
+    page_unpublished.connect(send_unpublished_signal)
 
 
 class ArticlePageRelatedLink(GraphQLEnabledModel, Orderable):
