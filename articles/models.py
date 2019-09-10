@@ -1,4 +1,3 @@
-from http.client import responses
 from django.db import models
 
 from modelcluster.fields import ParentalKey
@@ -7,7 +6,10 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, \
+    MultiFieldPanel, \
+    InlinePanel, \
+    PageChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailmarkdown.edit_handlers import MarkdownPanel
 from wagtailmarkdown.fields import MarkdownField
@@ -16,10 +18,9 @@ from wagtail_graphql.models import GraphQLEnabledModel, GraphQLField
 from wagtail.core.signals import page_published, page_unpublished
 import urllib
 import logging
-import json
 import os
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
@@ -84,34 +85,54 @@ class ArticlePage(GraphQLEnabledModel, Page):
         GraphQLField('related_links')
     ]
 
-    def send_published_signal(self, **kwargs):
+    def send_published_signal(sender, **kwargs):
         """Sending signal when an article is published."""
-        url = os.getenv('NETLIFY_HOOKS_URL')
-        data = {}
+        logger.debug('メソッドガ ヨバレタヨー')
+        if os.getenv('NETLIFY_HOOKS_URL') is None:
+            url = ''
+        else:
+            url = os.getenv('NETLIFY_HOOKS_URL').__str__()
+        logger.debug('URL ハ %s ダヨー' % url)
+        values = {
+            'trigger_branch': 'published',
+            'trigger_title': '%s was published.' % sender.title
+        }
         headers = {
             'Content-Type': 'application/json',
         }
-        req = urllib.request.Request(url, json.dumps(data).encode(), headers)
-        res = urllib.request.urlopen(req).read()
-        logger.debug(res)
+        data = urllib.parse.urlencode(values).encode()
+        logger.debug('データ デキタヨー')
+        req = urllib.request.Request(url, data, headers)
+        logger.debug('リクエスト ジュンビ デキタヨー')
+        res = urllib.request.urlopen(req).read().decode('utf-8')
+        logger.debug('リクエスト ケッカ ハ %s ダヨー' % res)
 
-        page_published.send(sender=self.__class__)
-
-    def send_unpublished_signal(self, **kwargs):
+    def send_unpublished_signal(sender, **kwargs):
         """Sending signal when an article is unpublished."""
-        url = os.getenv('NETLIFY_HOOKS_URL')
-        data = {}
+        logger.debug('メソッドガ ヨバレタヨー')
+        if os.getenv('NETLIFY_HOOKS_URL') is None:
+            url = ''
+        else:
+            url = os.getenv('NETLIFY_HOOKS_URL').__str__()
+        logger.debug('URL ハ %s ダヨー' % url)
+        values = {
+            'trigger_branch': 'published',
+            'trigger_title': '%s was published.' % sender.title
+        }
         headers = {
             'Content-Type': 'application/json',
         }
-        req = urllib.request.Request(url, json.dumps(data).encode(), headers)
-        res = urllib.request.urlopen(req).read()
-        logger.debug(res)
+        data = urllib.parse.urlencode(values).encode()
+        logger.debug('データ デキタヨー')
+        req = urllib.request.Request(url, data, headers)
+        logger.debug('リクエスト ジュンビ デキタヨー')
+        res = urllib.request.urlopen(req).read().decode('utf-8')
+        logger.debug('リクエスト ケッカ ハ %s ダヨー' % res)
 
-        page_unpublished.send(sender=self.__class__)
-
+    logger.debug('シグナルヲ トウロクスルヨー')
     page_published.connect(send_published_signal)
     page_unpublished.connect(send_unpublished_signal)
+    logger.debug('シグナルヲ トウロクシタヨー')
 
 
 class ArticlePageRelatedLink(GraphQLEnabledModel, Orderable):
