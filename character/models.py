@@ -58,7 +58,7 @@ class CharacterPage(GraphQLEnabledModel, Page):
 
     def clean(self):
         super().clean()
-        new_title = '%s' % self.name
+        new_title = '%s(%s)' % (self.name, self.character_id)
         new_slug = '%s' % self.character_id
         self.title = new_title
         self.slug = slugify(new_slug)
