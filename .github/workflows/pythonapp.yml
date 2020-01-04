@@ -35,6 +35,20 @@ jobs:
     # - name: Test with pytest
     #   run: |
     #     pipenv run tests
+    - name: Install awscli
+        run: |
+          mkdir -p ~/.aws
+          touch ~/.aws/config
+
+          echo "[default]
+          region = us-east-1
+          output = json" > ~/.aws/config
+
+          touch ~/.aws/credentials
+
+          echo "[default]
+          aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key = ${{ secrets.AWS_SECRET_KEY_ID }}" > ~/.aws/credentials
     - name: Deploy for Development Environment
       run: |
         zappa update dev
