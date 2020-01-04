@@ -41,5 +41,4 @@ pip-selfcheck.json
 .vscode/
 .env
 .aws/
-./zappa_setting.json
-./zappa_setting.json.old
+zappa_setting.json
