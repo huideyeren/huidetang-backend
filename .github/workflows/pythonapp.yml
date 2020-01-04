@@ -23,6 +23,8 @@ jobs:
         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
         echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
         source ~/.bash_profile
+        pyenv install 3.7.6
+        pyenv local 3.7.6
         pipenv sync
     # - name: Lint with flake8
     #   run: |
