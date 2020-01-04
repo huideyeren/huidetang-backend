@@ -25,6 +25,7 @@ jobs:
         source ~/.bash_profile
         pyenv install 3.7.6
         pyenv local 3.7.6
+        pipenv shell
         pipenv install
     # - name: Lint with flake8
     #   run: |
