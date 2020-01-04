@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        apt-get install python3-dev libmysqlclient-dev
+        sudo apt-get install python3-dev libmysqlclient-dev
         pip install pipenv
         pipenv install
     # - name: Lint with flake8
