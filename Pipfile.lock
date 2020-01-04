@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "61c78cacb351ba6f79b74d6a01644414c516be45ea8dff4e5e3b515a9a9977db"
+            "sha256": "514a63e6551277612379c8b916f6ce55e026d31bf1bf2db61d501148d4832d3b"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.8"
+            "python_version": "3.7"
         },
         "sources": [
             {
@@ -460,7 +460,7 @@
         },
         "wagtail-markdown": {
             "git": "https://github.com/torchbox/wagtail-markdown.git",
-            "ref": "e6860c39b341a7006fd48915c220b98b6e8bee0c"
+            "ref": "621bb2411ab37886bc444d44d19c3bcf1e48d0f6"
         },
         "webencodings": {
             "hashes": [

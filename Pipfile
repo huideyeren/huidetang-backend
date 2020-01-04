@@ -7,7 +7,7 @@ verify_ssl = true
 flake8 = "*"
 
 [packages]
-wagtail = "<2.8,>=2.7"
+wagtail = "*"
 Django = "*"
 django-storages = "*"
 zappa-django-utils = "*"
@@ -15,12 +15,12 @@ awscli = "*"
 zappa = "*"
 mysqlclient = "*"
 django-s3-storage = "*"
-wagtail-markdown = {git = "https://github.com/torchbox/wagtail-markdown.git",ref = "e6860c39b341a7006fd48915c220b98b6e8bee0c"}
+wagtail-markdown = {git = "https://github.com/torchbox/wagtail-markdown.git"}
 django-ses = "*"
 wagtail-graphql-api = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.7"
 
 [pipenv]
 allow_prereleases = true
