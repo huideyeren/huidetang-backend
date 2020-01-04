@@ -30,12 +30,12 @@ jobs:
     #   run: |
     #     pipenv run tests
     - name: Install awscli
-        run: |
-          mkdir -p ~/.aws
-          touch ~/.aws/config
-          echo "[default]\nregion = us-east-1\noutput = json" > ~/.aws/config
-          touch ~/.aws/credentials
-          echo "[default]\naws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}\naws_secret_access_key = ${{ secrets.AWS_SECRET_KEY_ID }}" > ~/.aws/credentials
+      run: |
+        mkdir -p ~/.aws
+        touch ~/.aws/config
+        echo "[default]\nregion = us-east-1\noutput = json" > ~/.aws/config
+        touch ~/.aws/credentials
+        echo "[default]\naws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}\naws_secret_access_key = ${{ secrets.AWS_SECRET_KEY_ID }}" > ~/.aws/credentials
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
