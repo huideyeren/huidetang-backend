@@ -7,8 +7,8 @@ verify_ssl = true
 flake8 = "*"
 
 [packages]
-wagtail = "<2.7,>=2.6"
-Django = "==2.1.7"
+wagtail = "<2.8,>=2.7"
+Django = ">=2.1.15"
 django-storages = "*"
 zappa-django-utils = "*"
 awscli = "*"
