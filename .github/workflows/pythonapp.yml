@@ -17,7 +17,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         sudo apt-get install python3-dev libmysqlclient-dev
-        pip install pipenv
+        pip install pipenv zappa
         pipenv install
     # - name: Lint with flake8
     #   run: |
