@@ -29,40 +29,13 @@ jobs:
     # - name: Test with pytest
     #   run: |
     #     pipenv run tests
-    # - name: Install awscli
-    #   run: |
-    #     pip install awscli
-    # - name: Output AWS Credentials
-    #   run: |
-    #     mkdir -p ~/.aws
-    #     touch ~/.aws/config
-    #     echo "[default]\nregion = us-east-1\noutput = json" > ~/.aws/config
-    #     touch ~/.aws/credentials
-    #     echo "[default]\naws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}\naws_secret_access_key = ${{ secrets.AWS_SECRET_KEY_ID }}" > ~/.aws/credentials
     - name: Configure Zappa
       run: |
         touch zappa_settings.json
         echo "{\"dev\":{\"aws_region\": \"us-east-1\",\"django_settings\": \"huidetang.settings.dev\",\"project_name\": \"huidetang\",\"runtime\": \"python3.7\",\"s3_bucket\": \"${{ secrets.AWS_S3_BUCKET }}\",\"environment_variables\": {\"AWS_ACCESS_KEY_ID\":\"${{secrets.AWS_ACCESS_KEY_ID}}\",\"AWS_SECRET_ACCESS_KEY\":\"${{secrets.AWS_SECRET_ACCESS_KEY}}\",\"NETLIFY_HOOKS_URL\":\"${{secrets.NETLIFY_HOOKS_URL}}\",\"DJANGO_STAGING_USER\":\"${{secrets.DJANGO_STAGING_USER}}\",\"DJANGO_STAGING_PASSWORD\":\"${{secrets.DJANGO_STAGING_PASSWORD}}\",\"DJANGO_STAGING_HOST\":\"${{secrets.DJANGO_STAGING_HOST}}\"},\"slim_handler\": false},\"dev_ap_northeast_1\": {\"aws_region\": \"ap-northeast-1\",\"extends\": \"dev\"},\"dev_ap_south_1\": {\"aws_region\": \"ap-south-1\",\"extends\": \"dev\"},\"dev_ap_southeast_1\": {\"aws_region\": \"ap-southeast-1\",\"extends\": \"dev\"},\"dev_ca_central_1\": {\"aws_region\": \"ca-central-1\",\"extends\": \"dev\"},\"dev_cn_north_1\": {\"aws_region\": \"cn-north-1\",\"extends\": \"dev\"},\"dev_cn_northwest_1\": {\"aws_region\": \"cn-northwest-1\",\"extends\": \"dev\"},\"dev_eu_central_1\": {\"aws_region\": \"eu-central-1\",\"extends\": \"dev\"},\"dev_eu_west_1\": {\"aws_region\": \"eu-west-1\",\"extends\": \"dev\"},\"dev_sa_east_1\": {\"aws_region\": \"sa-east-1\",\"extends\": \"dev\"},\"dev_us_west_1\": {\"aws_region\": \"us-west-1\",\"extends\": \"dev\"}}" >zappa_settings.json
-    # - name: Configure AWS credentials by Official Actions
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.INPUT_AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.INPUT_AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: us-east-1
-    # - name: Configure AWS credentials by AWS-Cli
-    #   run: |
-    #     aws configure --profile default
-    #   env:
-    #     AWS_ACCESS_KEY_ID: ${{ secrets.INPUT_AWS_ACCESS_KEY_ID }}
-    #     AWS_SECRET_ACCESS_KEY: ${{ secrets.INPUT_AWS_SECRET_ACCESS_KEY }}
-    #     AWS_REGION: us-east-1
     - name: Deploy for Development Environment
       run: |
         pipenv run zappa update dev
-      # run: |
-      #   export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials
-      #   export AWS_CONFIG_FILE=~/.aws/config
-      #   pipenv run zappa update dev
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
