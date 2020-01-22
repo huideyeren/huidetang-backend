@@ -8,7 +8,7 @@ flake8 = "*"
 
 [packages]
 wagtail = "*"
-Django = "*"
+Django = "==2.1"
 django-storages = "*"
 zappa-django-utils = "*"
 awscli = "*"
@@ -18,7 +18,7 @@ django-s3-storage = "*"
 wagtail-markdown = {git = "https://github.com/torchbox/wagtail-markdown.git"}
 django-ses = "*"
 wagtail-graphql-api = "*"
-tqdm = ">=4.32.2"
+tqdm = ">=4.19.1"
 
 [requires]
 python_version = "3.7"
