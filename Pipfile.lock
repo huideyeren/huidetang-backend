@@ -25,18 +25,18 @@
         },
         "asgiref": {
             "hashes": [
-                "sha256:7e06d934a7718bf3975acbf87780ba678957b87c7adc056f13b6215d610695a0",
-                "sha256:ea448f92fc35a0ef4b1508f53a04c4670255a3f33d22a81c8fc9c872036adbe5"
+                "sha256:3e4192eaec0758b99722f0b0666d5fbfaa713054d92e8de5b58ba84ec5ce696f",
+                "sha256:c8f49dd3b42edcc51d09dd2eea8a92b3cfc987ff7e6486be734b4d0cbfd5d315"
             ],
-            "version": "==3.2.3"
+            "version": "==3.2.5"
         },
         "awscli": {
             "hashes": [
-                "sha256:12940e548d88ccc6ca5336680678f1c97da61581e530bf642be90e021f50d950",
-                "sha256:f9bed529769f764b01b0ae55e7853ba69f6cbf3db8e68d53c793ad18fc26edf3"
+                "sha256:2aacbd81311df3f7a4d20ee7521f8bce78caef3e4c5f84e419b1bf036c6da96a",
+                "sha256:dc302ba80d3059bb6a68062708fcf7a8759e30537564b6236e2b09cdbab0d65b"
             ],
             "index": "pypi",
-            "version": "==1.18.14"
+            "version": "==1.18.21"
         },
         "beautifulsoup4": {
             "hashes": [
@@ -55,17 +55,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:3b00b93d9548ebc0777f54cbd77c11e2721f7bb873ffb371cf4fa66d06750de7",
-                "sha256:3d3973502f96faaa534faec083ce4cd51a969f613d740be9e34cb7e42238f59c"
+                "sha256:50105a25e301e20b361b2b8fafee196a425a4758e51f400a0f381d42e4bd909e",
+                "sha256:5fe70e656f92e4e649dc4cf05786f57d180e5d491bcb22c80411512ec2b27c15"
             ],
-            "version": "==1.12.14"
+            "version": "==1.12.21"
         },
         "botocore": {
             "hashes": [
-                "sha256:37e713b86bc833587e002610d0b2b5c5c88438617d68189d1b541e20726a43d4",
-                "sha256:4f889842519f54d007e285637c625a0645ffbe6aaa291b62ba510f3a25948f77"
+                "sha256:4aaf6c94bcaace260138d32eae144be1b5d2ddce9ef0f395da32c68e106ff20f",
+                "sha256:86f7f1c489887f9e3c2ede598e2a30f8bd259c11e8ebe25e897e40231b3f4bc8"
             ],
-            "version": "==1.15.14"
+            "version": "==1.15.21"
         },
         "certifi": {
             "hashes": [
@@ -176,10 +176,10 @@
         },
         "graphene-django": {
             "hashes": [
-                "sha256:1f65861af9422e42418c6caad3ab6b75ee52b2410dc860de3060a5dcd3840359",
-                "sha256:d9e019a23f442ca31f0e012f578f2b84d40fbf66b88930fc747f7ad8f9a9f7c8"
+                "sha256:2d1db0022740475bc76a7372f6d9637ab3dc3217f1b330c6090b1cca7f9538fd",
+                "sha256:85420f93926f874c48b5dd119e4a0e231000a7501d7fc2218aa67f6deaf924d9"
             ],
-            "version": "==2.8.2"
+            "version": "==2.9.0"
         },
         "graphql-core": {
             "hashes": [
@@ -419,7 +419,7 @@
         },
         "zappa": {
             "git": "https://github.com/Miserlou/Zappa.git",
-            "ref": "23cede829f2a76957cf514a8799dddd25dbd041a"
+            "ref": "80a6881f0ec0be525a8fd7835b5a1157f9e66100"
         },
         "zappa-django-utils": {
             "hashes": [
