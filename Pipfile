@@ -22,6 +22,7 @@ wagtail-graphql-api = "*"
 tqdm = "*"
 bleach = "*"
 markdown = "*"
+argcomplete = "*"
 
 [requires]
 python_version = "3.7"
