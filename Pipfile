@@ -21,6 +21,7 @@ django-ses = "*"
 wagtail-graphql-api = "*"
 tqdm = "*"
 bleach = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.7"
