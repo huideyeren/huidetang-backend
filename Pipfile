@@ -23,6 +23,7 @@ tqdm = "*"
 bleach = "*"
 markdown = "*"
 argcomplete = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"
