@@ -20,6 +20,7 @@ wagtail-markdown = {git = "https://github.com/torchbox/wagtail-markdown.git"}
 django-ses = "*"
 wagtail-graphql-api = "*"
 tqdm = "*"
+bleach = "*"
 
 [requires]
 python_version = "3.7"
