@@ -24,6 +24,7 @@ bleach = "*"
 markdown = "*"
 argcomplete = "*"
 click = "*"
+hjson = "*"
 
 [requires]
 python_version = "3.7"
