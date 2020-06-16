@@ -28,6 +28,7 @@ hjson = "*"
 slugify = "*"
 toml = "*"
 troposphere = "*"
+durationpy = "*"
 
 [requires]
 python_version = "3.7"
