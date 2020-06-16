@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "65c5c5d63130f9ef4ec64e948eda5f069fd3b6f8e9f3f530704cf4d86942fad4"
+            "sha256": "0065290f607ac55db49537e0ab732d270fb4eb676e60054ca255b8ae2953f778"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -82,6 +82,12 @@
                 "sha256:9cd41137dc19af6a5e03b630eefe7d1f458d964d406342dd3edf625839b944cc"
             ],
             "version": "==2020.4.5.2"
+        },
+        "cfn-flip": {
+            "hashes": [
+                "sha256:2bed32a1f4dca26dc64178d52511fd4ef778b5ccbcf32559cac884ace75bde6a"
+            ],
+            "version": "==1.2.3"
         },
         "chardet": {
             "hashes": [
@@ -435,6 +441,13 @@
             ],
             "index": "pypi",
             "version": "==4.46.1"
+        },
+        "troposphere": {
+            "hashes": [
+                "sha256:a5423347ffbd431c397db02e90dffe3f0bcee199a3e67eae3a76ce5b6f758b7d"
+            ],
+            "index": "pypi",
+            "version": "==2.6.1"
         },
         "unidecode": {
             "hashes": [

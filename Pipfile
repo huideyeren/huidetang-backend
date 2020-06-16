@@ -27,6 +27,7 @@ click = "*"
 hjson = "*"
 slugify = "*"
 toml = "*"
+troposphere = "*"
 
 [requires]
 python_version = "3.7"
