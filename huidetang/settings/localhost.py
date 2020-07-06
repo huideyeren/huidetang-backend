@@ -13,22 +13,29 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'huidetang',
-        'USER': os.getenv("DJANGO_STAGING_USER"),
-        'PASSWORD': os.getenv("DJANGO_STAGING_PASSWORD"),
-        'HOST': os.getenv("DJANGO_STAGING_HOST"),
-        'PORT': '3306',
-        'OPTIONS': {
-            'charset': 'utf8',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            'connect_timeout': 28800,
-        },
-        'TEST': {
-            'NAME': 'test_huidetang'
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'huidetang',
+#         'USER': os.getenv("DJANGO_STAGING_USER"),
+#         'PASSWORD': os.getenv("DJANGO_STAGING_PASSWORD"),
+#         'HOST': os.getenv("DJANGO_STAGING_HOST"),
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'charset': 'utf8',
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#             'connect_timeout': 28800,
+#         },
+#         'TEST': {
+#             'NAME': 'test_huidetang'
+#         }
+#     }
+# }
 
 try:
     from .local import *
